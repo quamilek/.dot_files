@@ -106,3 +106,5 @@ White='\e[0;37m'        # White
 source ~/.git-prompt.sh
 
 PS1="\[$Blue\]\u:\[$White\]\[$White\]\w\[\033[m\]\[$Cyan\]\$(__git_ps1)\[$White\]\$ "\
+
+alias pyclean='find . -name "*.pyc" | xargs -I {} rm -v "{}"'
