@@ -108,3 +108,4 @@ source ~/.git-prompt.sh
 PS1="\[$Blue\]\u:\[$White\]\[$White\]\w\[\033[m\]\[$Cyan\]\$(__git_ps1)\[$White\]\$ "\
 
 alias pyclean='find . -name "*.pyc" | xargs -I {} rm -v "{}"'
+alias glog='git log --pretty=oneline --abbrev-commit -n 10'
