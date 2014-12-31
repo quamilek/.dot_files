@@ -12,9 +12,6 @@ alias glogm='git log --pretty=oneline --abbrev-commit -n 10 --no-merges develop'
 alias rmpyc='find . -name "*.pyc" | xargs -I {} rm -v "{}"'
 #brew 
 alias start-redis='redis-server /usr/local/etc/redis.conf'
-alias tools-activate="source ~/workspace/tools/bin/activate"
-
-alias start-vagrant-ralph="cd ~/virtual_machines/ && vagrant up && vagrant ssh"
 alias fap="~/workspace/tools/bin/fab -f ~/workspace/tools/project/fabfile.py $1"
 
 # path
