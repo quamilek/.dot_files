@@ -1,0 +1,9 @@
+- link:
+    ~/.bashrc:
+        relink: true
+        path: bashrc
+    ~/.config/terminator:
+        create: true
+        path: terminator/
+    ~/.gitconfig:
+        path: gitconfig

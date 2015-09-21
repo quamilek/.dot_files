@@ -16,7 +16,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
+HISTSIZE=1000
 HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
@@ -72,6 +72,27 @@ xterm*|rxvt*)
     ;;
 esac
 
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -92,20 +113,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Regular Colors
-Black='\e[0;30m'        # Black
-Red='\e[0;31m'          # Red
-Green='\e[0;32m'        # Green
-Yellow='\e[0;33m'       # Yellow
-Blue='\e[0;34m'         # Blue
-Purple='\e[0;35m'       # Purple
-Cyan='\e[0;36m'         # Cyan
-White='\e[0;37m'        # White
+export GOROOT=/usr/local/go
+export PATH=$PATH:/usr/local/go/bin
+source ~/.nix-profile/etc/profile.d/nix.sh
 
-# Load in the git branch prompt script.
-source ~/.git-prompt.sh
-
-PS1="\[$Blue\]\u:\[$White\]\[$White\]\w\[\033[m\]\[$Cyan\]\$(__git_ps1)\[$White\]\$ "\
-
-alias pyclean='find . -name "*.pyc" | xargs -I {} rm -v "{}"'
-alias glog='git log --pretty=oneline --abbrev-commit -n 10'
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
